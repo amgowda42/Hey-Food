@@ -26,17 +26,16 @@
 }
 
 .res-card{
-    width:200px;
-    height: 300px;
+    width:220px;
     border:none !important;
     border-radius: 7px;
     box-shadow: .5px .5px .5px 0px rgba(0,0,0);
-    padding: 6px;
+    padding: 7px;
     background: #f0f0f0;
 }
 
 .res-card:hover{
-    border: 3px solid hwb(0 50% 50% / 0.607);
+    border: 3px solid hwb(0 11% 86% / 0.607);
     cursor: pointer;
     box-shadow: 2px 2px 2px rgba(0,0,0);
 }
