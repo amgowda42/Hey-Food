@@ -13,8 +13,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(SWIGGY_API
-    );
+    const data = await fetch(SWIGGY_API);
     console.log(data);
     const json = await data.json();
     console.log(json);
