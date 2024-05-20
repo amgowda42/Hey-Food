@@ -12,6 +12,7 @@ const RestaurantCard = (props) => {
         src={RES_IMG_URL + cloudinaryImageId}
         alt="res-img"
       />
+
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating}</h4>
