@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import food_logo from "/assets/food_logo.png";
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
+  useEffect(() => {
+  },[btnName]);
 
   return (
     <div className="header">
