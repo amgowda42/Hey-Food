@@ -5,7 +5,9 @@
   "scripts": {
     "test": "jest",
     "build": "parcel build index.html",
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -16,8 +18,10 @@
   "bugs": {
     "url": "https://github.com/amgowda42/Hey-Food/issues"
   },
-  "homepage": "https://github.com/amgowda42/Hey-Food#readme",
+  "homepage": "https://github.com/amgowda42/Hey-Food",
+  
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "parcel": "^2.12.0",
     "process": "^0.11.10"
   },
