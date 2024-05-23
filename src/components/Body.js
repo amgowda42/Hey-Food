@@ -16,7 +16,6 @@ const Body = () => {
     const data = await fetch(SWIGGY_API);
     console.log(data);
     const json = await data.json();
-    console.log(json);
     setListOfRestuarant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
