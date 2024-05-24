@@ -1,9 +1,12 @@
-const User = () => {
+const User = (props) => {
+    const {name , dis , email} = props;
+    console.log(props); 
+
     return (
         <div className="user-card">
-            <h1>Name:Annappa Gowda</h1>
-            <h2>Discription:Front End Developer</h2>
-            <h3>Contact:@amg123</h3>
+            <h1>Name:{name}</h1>
+            <h2>Discription:{dis}</h2>
+            <h3>Contact:{email}</h3>
         </div>
     )
 };
