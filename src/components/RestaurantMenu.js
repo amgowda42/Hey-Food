@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { SWIGGY_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [resMenu, setResMenu] = useState(null);
@@ -8,20 +9,20 @@ const RestaurantMenu = () => {
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
+    const data = await fetch(SWIGGY_API);
     const json = await data.json();
     console.log(json);
+    setResMenu(json);
   };
-  return resMenu === null ? (
-    <Shimmer />
-  ) : (
+  if (resMenu === null) return <Shimmer />;
+  const { name,cuisines } =
+    resMenu?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      ?.restaurants[4]?.info;
+  return (
     <div className="menu">
-      <h1>Megana Foods</h1>
-      <h2>Biriyani</h2>
-      <h3>Chicken Masala</h3>
+      <h1>{name}</h1>
+      <h2>{cuisines.join(", ")}</h2>
+      <h3>{}</h3>
     </div>
   );
 };
