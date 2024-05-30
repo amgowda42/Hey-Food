@@ -1,28 +1,41 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { SWIGGY_API } from "../utils/constants";
+import { useParams } from "react-router-dom";
+import { MENU_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
-  const [resMenu, setResMenu] = useState(null);
+  const [resInfo, setResInfo] = useState(null);
+  const { resId } = useParams();
+  // const params = useParams();
+
   useEffect(() => {
     fetchMenu();
   }, []);
 
-  const fetchMenu = async () => {
-    const data = await fetch(SWIGGY_API);
+  fetchMenu = async () => {
+    const data = await fetch(MENU_API + resId);
     const json = await data.json();
-    console.log(json);
-    setResMenu(json);
+    setResInfo(json.data);
+    // console.log(json.data)
   };
-  if (resMenu === null) return <Shimmer />;
-  const { name,cuisines } =
-    resMenu?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
-      ?.restaurants[4]?.info;
+
+  if (resInfo === null) return <Shimmer />;
+  const { name, cuisines } = resInfo?.cards[2]?.card?.card?.info;
+  const { itemCards } =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[2]?.card?.card;
+  // console.log(itemCards);
   return (
     <div className="menu">
       <h1>{name}</h1>
       <h2>{cuisines.join(", ")}</h2>
-      <h3>{}</h3>
+      <ul>
+        {itemCards.map((item) => (
+          <li key={item?.card?.info?.id}>
+            {item?.card?.info?.name} - {item?.card?.info?.defaultPrice / 100}{" "}
+            and Comes Uder the {item?.card?.info?.category}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
