@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestuarant, setListOfRestuarant] = useState([]);
   const [filteredRestuarant, setfilteredRestuarant] = useState([]);
   const [searchText, setsearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -23,6 +25,8 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  if (onlineStatus === false) return <h1>You are on the offline</h1>;
 
   return listOfRestuarant.length === 0 ? (
     <Shimmer />
