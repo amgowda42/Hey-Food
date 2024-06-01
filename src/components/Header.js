@@ -9,14 +9,14 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo-container">
+    <div className="flex justify-between items-center border-b-4 border-indigo-500 py-1 px-3 font-serif ">
+      <div className="w-24 ">
         <Link to="/">
           <img src={food_logo} className="logo" alt="logo" />
         </Link>
       </div>
-      <div className="nav-items">
-        <ul>
+      <div>
+        <ul className="flex items-center justify-center gap-6 text-xl font-serif">
           <li>Online Status:{onlineStatus === false ? "🔴" : "✅"}</li>
           <li>
             <Link to="/">Home</Link>
@@ -35,7 +35,7 @@ const Header = () => {
             onClick={() => {
               btnName === "Login" ? setbtnName("Logout") : setbtnName("Login");
             }}
-            className="login"
+            className="py-0.5 px-5 bg-gray-500 rounded border-slate-700 text-rose-400"
           >
             {btnName}
           </button>
