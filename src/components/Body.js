@@ -1,15 +1,17 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withIsOpenLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+const RestaurantCardOpen = withIsOpenLabel(RestaurantCard);
 
 const Body = () => {
   const [listOfRestuarant, setListOfRestuarant] = useState([]);
   const [filteredRestuarant, setfilteredRestuarant] = useState([]);
   const [searchText, setsearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+  console.log(listOfRestuarant);
 
   useEffect(() => {
     fetchData();
@@ -78,7 +80,11 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurants/" + restaurant?.info?.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.isOpen ? (
+              <RestaurantCardOpen resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

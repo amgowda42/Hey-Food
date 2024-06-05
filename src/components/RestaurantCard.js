@@ -7,7 +7,11 @@ const RestaurantCard = (props) => {
   const { deliveryTime } = resData.info.sla;
   return (
     <div className="p-3 w-[250px] rounded-lg  bg-gray-200 font-serif text-[16px]">
-      <img className="rounded-lg" src={RES_IMG_URL + cloudinaryImageId} alt="res-img" />
+      <img
+        className="rounded-lg"
+        src={RES_IMG_URL + cloudinaryImageId}
+        alt="res-img"
+      />
 
       <h3 className="font-bold text-lg py-2 ">{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
@@ -16,6 +20,17 @@ const RestaurantCard = (props) => {
       <h4>{locality}</h4>
     </div>
   );
+};
+
+export const withIsOpenLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white px-3">Open</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
