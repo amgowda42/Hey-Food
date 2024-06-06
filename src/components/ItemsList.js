@@ -18,7 +18,7 @@ const ItemsList = ({ items }) => {
               <br />
               <span className="font-semibold flex items-center justify-start text-base text-red-700">
                 Rs.
-                {item?.card?.info?.price / 100 || 
+                {item?.card?.info?.price / 100 ||
                   item?.card?.info?.defaultPrice / 100}
               </span>
             </div>
@@ -27,6 +27,11 @@ const ItemsList = ({ items }) => {
             </div>
           </div>
           <div className="max-w-32 mx-3  rounded-md border-red-300 border-2">
+            <div className=" ml-9 absolute">
+              <button className="text-sm bg-white rounded px-2 text-center text-yellow-700">
+                Add +
+              </button>
+            </div>
             <img
               src={RES_IMG_URL + item?.card?.info?.imageId}
               alt="item image"
