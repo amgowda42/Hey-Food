@@ -1,9 +1,10 @@
 import RestaurantCard, { withIsOpenLabel } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const RestaurantCardOpen = withIsOpenLabel(RestaurantCard);
 
 const Body = () => {
@@ -11,7 +12,8 @@ const Body = () => {
   const [filteredRestuarant, setfilteredRestuarant] = useState([]);
   const [searchText, setsearchText] = useState("");
   const onlineStatus = useOnlineStatus();
-  console.log(listOfRestuarant);
+  const { loggedInUser, setUserName } = useContext(UserContext);
+  // console.log(listOfRestuarant);
 
   useEffect(() => {
     fetchData();
@@ -72,6 +74,17 @@ const Body = () => {
           >
             Search
           </button>
+        </div>
+        <div>
+          <label>User Name: </label>
+          <input
+            className="p-1 border-2 border-red-400 rounded-sm text-center"
+            placeholder="Login"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="flex flex-wrap gap-y-16 gap-x-14 justify-center ">

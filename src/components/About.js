@@ -1,11 +1,22 @@
 import UserClass from "./UserClass";
-import { Component } from "react";
+import { Component, Consumer} from "react";
+import UserContext from "../utils/UserContext";
 
 class About extends Component {
   componentDidMount() {}
   render() {
     return (
       <div>
+        <div>
+          loggedIN User
+          <UserContext.Consumer>
+            {({ loggedInUser }) => (
+              <h1 className="font-bold text-lg text-orange-500">
+                {loggedInUser}
+              </h1>
+            )}
+          </UserContext.Consumer>
+        </div>
         <h1>About Us</h1>
         <UserClass
           name="Annappa Gowda (Class based component)"

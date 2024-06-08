@@ -6,16 +6,27 @@ import About from "./components/About";
 import Contact from "./components/Contcat";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const App = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    //data fetching from api by making an api call
+    const data = {
+      name: "Annappa Gowda",
+    };
+    setUserName(data.name);
+  }, []);
   return (
-    <>
-      <Header />
-      <Outlet />
-    </>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <>
+        <Header />
+        <Outlet />
+      </>
+    </UserContext.Provider>
   );
 };
 

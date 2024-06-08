@@ -2,18 +2,18 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-import food_logo from "/assets/food_logo.png";
-import userContext from "../utils/userContext";
+import food_logo from "/assets/food_logo.svg";
+import UserContext from "../utils/UserContext";
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
   useEffect(() => {}, [btnName]);
   const onlineStatus = useOnlineStatus();
-  const { loggedInUser } = useContext(userContext);
-  console.log(loggedInUser);
+  const { loggedInUser } = useContext(UserContext);
+  // console.log(loggedInUser);
 
   return (
     <div className="flex justify-between items-center border-b-4 border-indigo-500 py-1 px-3 font-serif ">
-      <div className="w-24 ">
+      <div className="w-[105px] ">
         <Link to="/">
           <img src={food_logo} className="logo" alt="logo" />
         </Link>
@@ -42,7 +42,7 @@ const Header = () => {
           >
             {btnName}
           </button>
-          <li>{loggedInUser}</li>
+          <li className="text-sm text-orange-500">{loggedInUser}</li>
         </ul>
       </div>
     </div>
