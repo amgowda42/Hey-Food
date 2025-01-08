@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useNavigate } from "react-router-dom";
 
 import food_logo from "/assets/food_logo.svg";
 import UserContext from "../utils/UserContext";
@@ -13,6 +14,10 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   // console.log(cartItems);
   // console.log(loggedInUser);
+  const navigate = useNavigate();
+  const handleRefreshPage = () => {
+    navigate(0);
+  };
 
   return (
     <div className="flex justify-between items-center border-b-4 border-indigo-500 py-1 px-3 font-serif ">

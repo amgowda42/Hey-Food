@@ -1,5 +1,5 @@
-import UserClass from "./UserClass";
-import { Component, Consumer} from "react";
+import UserClass from "../components/UserClass";
+import { Component, Consumer } from "react";
 import UserContext from "../utils/UserContext";
 
 class About extends Component {
