@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Back end of Hey Food",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "node index.js"
+  },
+  "author": "Annappa Gowda",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
